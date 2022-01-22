@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  ublog:
+    image: nikcio/ublog
+    build:
+      context: .
+      dockerfile: UBlog/Dockerfile
+    links:
+      - "umbraco-db"
+
+  umbraco-db:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: umbraco-db
+    user: root
+    volumes:
+      - umbraco.db:/var/opt/mssql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=DgUgK82DV4QIwD2n8NzYj
+    ports:
+      - "55870:1433"
+
+volumes:
+  umbraco.db:
