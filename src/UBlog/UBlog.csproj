@@ -7,6 +7,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
         <PackageReference Include="Umbraco.Cms" Version="9.2.0" />
+        <PackageReference Include="uSync" Version="9.0.6" />
     </ItemGroup>
 
     <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all winodws servers will run NLS -->
