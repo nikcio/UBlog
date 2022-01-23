@@ -21,6 +21,10 @@ services:
       - SA_PASSWORD=DgUgK82DV4QIwD2n8NzYj
     ports:
       - "55870:1433"
+    deploy:
+      resources:
+        limits:
+          memory: 2gb
 
 volumes:
   umbraco.db:
