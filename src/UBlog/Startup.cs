@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nikcio.UHeadless.Extentions.Startup;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
 
@@ -43,6 +44,7 @@ namespace UBlog
                 .AddBackOffice()
                 .AddWebsite()
                 .AddComposers()
+                .AddUHeadless()
                 .Build();
 #pragma warning restore IDE0022 // Use expression body for methods
 
@@ -59,6 +61,8 @@ namespace UBlog
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseUHeadlessGraphQLEndpoint();
 
             app.UseUmbraco()
                 .WithMiddleware(u =>
