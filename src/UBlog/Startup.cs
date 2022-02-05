@@ -43,6 +43,13 @@ namespace UBlog
         /// </remarks>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("graphql", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 #pragma warning disable IDE0022 // Use expression body for methods
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
@@ -69,7 +76,13 @@ namespace UBlog
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseUHeadlessGraphQLEndpoint();
+
+            app.UseRouting()
+                .UseCors("graphql")
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapGraphQL();
+                });
 
             app.UseUmbraco()
                 .WithMiddleware(u =>
