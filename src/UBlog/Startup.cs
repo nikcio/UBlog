@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nikcio.UHeadless.Extentions.Startup;
+using Nikcio.UHeadless.Mappers.Properties;
+using UBlog.Models.CustomPropertyMappings;
+using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
 
@@ -44,7 +48,10 @@ namespace UBlog
                 .AddBackOffice()
                 .AddWebsite()
                 .AddComposers()
-                .AddUHeadless()
+                .AddUHeadless(customPropertyMappings: new List<Action<IPropertyMap>>
+                {
+                    (x) => x.AddEditorMapping<UbUserPicker>(Constants.PropertyEditors.Aliases.UserPicker)
+                })
                 .Build();
 #pragma warning restore IDE0022 // Use expression body for methods
 
