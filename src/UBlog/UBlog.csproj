@@ -6,7 +6,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-        <PackageReference Include="Nikcio.UHeadless" Version="0.1.6-beta" />
+        <PackageReference Include="Nikcio.UHeadless" Version="1.0.0" />
         <PackageReference Include="Umbraco.Cms" Version="9.2.0" />
         <PackageReference Include="uSync" Version="9.1.0" />
     </ItemGroup>

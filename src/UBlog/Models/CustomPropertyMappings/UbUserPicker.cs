@@ -1,8 +1,6 @@
-﻿using Nikcio.UHeadless.Commands.Properties;
-using Nikcio.UHeadless.Models.Dtos.Propreties.PropertyValues;
-using Umbraco.Cms.Core.Security;
+﻿using Nikcio.UHeadless.UmbracoContent.Properties.Bases.Models;
+using Nikcio.UHeadless.UmbracoContent.Properties.EditorsValues.Default.Commands;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Cms.Core.Web;
 
 namespace UBlog.Models.CustomPropertyMappings
 {
@@ -17,7 +15,7 @@ namespace UBlog.Models.CustomPropertyMappings
             {
                 return;
             }
-            else if(value is int id)
+            else if (value is int id)
             {
                 var user = userService.GetUserById(id);
                 Name = user.Name;
