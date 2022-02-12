@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
@@ -27,8 +27,7 @@ var graphql = JSON.stringify({
 var requestOptions = {
     method: 'POST',
     headers: myHeaders,
-    body: graphql,
-    redirect: 'follow'
+    body: graphql
 };
 
 var { data: content } = await useAsyncData('data', () => fetch(useRuntimeConfig().API_URL, requestOptions)
