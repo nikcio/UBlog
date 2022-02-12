@@ -1,6 +1,6 @@
 <template>
     <div v-for="tag in tags">
-        <p>{{ tag }}</p>
+        <p class="tag">#{{ tag }}</p>
     </div>
 </template>
 
@@ -9,5 +9,11 @@ const props = defineProps({
     data: Object
 })
 
-let tags = props.data.value
+let tags = props?.data?.value
 </script>
+
+<style scoped>
+p.tag {
+    font-size: 14px;
+}
+</style>

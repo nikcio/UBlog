@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <BlogItem v-for="item in content.data.contentAtRoot.nodes[0].children" :item="item" />
+    <div class="blog-list">
+        <BlogItem v-for="item in content?.data?.contentAtRoot?.nodes[0]?.children" :item="item" />
     </div>
 </template>
 
@@ -13,10 +13,11 @@ var graphql = JSON.stringify({
         contentAtRoot (first: 1) {
             nodes {
             children {
+                url,
                 properties {
                 alias,
                 value
-            }
+                }
             }
             }
         }
@@ -30,7 +31,16 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-var { data: content } = await useAsyncData('data', () => fetch("https://localhost:49155/graphql/", requestOptions)
+var { data: content } = await useAsyncData('data', () => fetch(useRuntimeConfig().API_URL, requestOptions)
     .then(response => response.json())
-    .catch(error => console.log('error', error)))
+    .catch(error => console.log('error', error)));
 </script>
+
+<style scoped>
+div.blog-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+</style>

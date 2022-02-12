@@ -8,3 +8,9 @@
         </main>
     </div>
 </template>
+
+<script lang="ts" setup>
+useMeta(() => ({
+    title: "Nikcio - Blog"
+}))
+</script>

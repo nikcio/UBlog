@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 useMeta(() => ({
   meta: [
     {
@@ -145,3 +143,10 @@ useMeta(() => ({
   ]
 }))
 </script>
+
+<style>
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+</style>

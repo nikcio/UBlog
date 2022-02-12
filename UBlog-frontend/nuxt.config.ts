@@ -12,5 +12,8 @@ export default defineNuxtConfig({
                 file: resolve(__dirname, 'cms/index.vue')
             })
         }
-    }
+    },
+    publicRuntimeConfig: {
+        API_URL: process.env.API_URL
+    },
 })
